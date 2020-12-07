@@ -24,9 +24,36 @@ J = 2
 h1 = 499/J
 h = math.floor(h1)
 print(h)
-
+sum = 0
+X =[]
+Y = []
 for k in range(0,h):
     x = uniform_numbers[1+k*J]
+    X.append(x)
     y = uniform_numbers[1+(k+1)*J]
-    print("x is %f" %(x))
-    print("y is %f" %(y))
+    Y.append(y)
+    d = x * y
+    sum = sum + d
+
+Correlation_Matrix = np.zeros((249,2))
+for i in range(0,len(X)):
+    for j in range(0,J):
+        if j==0:
+            Correlation_Matrix[i][j] = X[i]
+        else:
+            Correlation_Matrix[i][j] = Y[i]
+print("Correlation matrix")
+print(Correlation_Matrix)
+print("Sum is %f" %(sum))
+Ro_J = 12 * (sum/(h+1)) - 3
+print("Ro_J is %f" %(Ro_J))
+Var_Ro_J = (13*h + 7)/(h+1)**2
+print("Var_Ro_J is %f" %(Var_Ro_J))
+
+A_J = Ro_J/math.sqrt(Var_Ro_J)
+print("A_J is %f" %(A_J))
+Z_alpha = stats.norm.ppf(q=0.95)
+if A_J > Z_alpha:
+    print("Reject")
+else:
+    print("Accept")
