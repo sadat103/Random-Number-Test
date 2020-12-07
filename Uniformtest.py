@@ -14,7 +14,6 @@ U = np.zeros(N)
 Z = np.zeros(N)
 Z[0] = 1505103
 U[0] = 1505103/(2 ** 31)
-    #print(U)
 for i in range(1,N):
     Z[i] = (65539 * Z[i-1]) % (2 ** 31)
     U[i] = Z[i]/(2 ** 31)

@@ -20,7 +20,6 @@ for i in range(1,500):
     U[i] = Z[i]/(2 ** 31)
 #print(Z)
 uniform_numbers = np.round_(U,6)
-print("Sub interval")
 np.savetxt("uniform.txt", uniform_numbers, fmt="%s")
 np.savetxt("Z.txt", Z, fmt="%s")
 array = np.arange(36).reshape(6,6)
@@ -30,6 +29,7 @@ A=np.array([[ 4529.4,9044.9,  13568,  18091, 22615,27892],
        [18091,36187,5281,72414,90470,111580],
        [22615,45234,67852,90470,113262,139476],
        [27892,55789,83685,111580,139476,172860]])
+print("A matrix")
 print(A)
 
 cnt = 1
@@ -50,3 +50,19 @@ sum=0
 for i in range(0,len(r)):
     sum = sum + r[i]
 print(sum)
+
+run_length_array = np.zeros(6)
+for i in range(0,len(r)):
+    if r[i] ==1:
+        run_length_array[0]=run_length_array[0] +1
+    elif r[i] ==2:
+        run_length_array[1]=run_length_array[1] +1
+    elif r[i] ==3:
+        run_length_array[2]=run_length_array[2] +1
+    elif r[i] ==4:
+        run_length_array[3]=run_length_array[3] +1
+    elif r[i] ==5:
+        run_length_array[4]=run_length_array[4] +1
+    else:
+        run_length_array[5]=run_length_array[5] +1
+print(run_length_array)
