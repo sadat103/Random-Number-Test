@@ -10,8 +10,8 @@ from scipy import stats
 #N = int(input ("Enter value of n :")) 
 #K = int(input  ("Enter value of k :"))
 #alpha = float(input  ("Enter value of alpha :"))
-U = np.zeros(500)
 Z = np.zeros(500)
+U = np.zeros(500)
 Z[0] = 1505103
 U[0] = 1505103/(2 ** 31)
     #print(U)
