@@ -26,7 +26,7 @@ np.savetxt("uniform.txt", uniform_numbers, fmt="%s")
 #print(K)
 print("item per interval")
 #d= N/K
-sum1 = 0
+
 k =0
 #print(uniform_numbers[1:4])
 N1 = np.zeros((250,2))
@@ -68,4 +68,19 @@ for i in range(0,len(K_A)):
             if (d+1)==p and (e+1)==q:
                 N2[d][e] = N2[d][e] + 1
 print(N2)
+sum=0
+for i in range (0,len(N2)):
+    for j in range(0,len(N2)):
+        t = (N2[i][j] - 500/(4**2))**2
+        sum = sum + t
+        #print(sum)
+CHi = ((4**2)/500)*sum
+print("Chi square is %f" %(CHi))
+a = stats.chi2.ppf(q=0.9,df=15)
+print(a)
+if(CHi > a):
+    print("Reject")
+else:
+    print("Accept")
 
+        
