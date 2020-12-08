@@ -65,12 +65,13 @@ for i in range(0,len(K_A)):
 
 print("Interval Count Array")
 print(N2)
+'''
 ll=0
 for i in range(0,len(N2)):
     for j in range(0,len(N2)):
         ll = ll + N2[i][j]
 print(ll)
-
+'''
 sum=0
 for i in range (0,len(N2)):
     for j in range(0,len(N2)):
