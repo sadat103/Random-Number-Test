@@ -55,7 +55,8 @@ for i in range(0,len(N1)):
                 K_array.append(k)
                
 K_A = np.resize(np.array(K_array),(250,2))
-print(K_A)
+#print(K_A)
+np.savetxt("Serial_K_array.txt", K_A, fmt="%s")
 for i in range(0,len(K_A)):
     for j in range(0,2):
         if j==0:
