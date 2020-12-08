@@ -7,15 +7,14 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from scipy import stats
 #def random_number(n):
-#N = int(input ("Enter value of n :")) 
-#K = int(input  ("Enter value of k :"))
-#alpha = float(input  ("Enter value of alpha :"))
-Z = np.zeros(500)
-U = np.zeros(500)
+N = int(input ("Enter value of n :")) 
+alpha = float(input  ("Enter value of alpha :"))
+Z = np.zeros(N)
+U = np.zeros(N)
 Z[0] = 1505103
 U[0] = 1505103/(2 ** 31)
     #print(U)
-for i in range(1,500):
+for i in range(1,N):
     Z[i] = (65539 * Z[i-1]) % (2 ** 31)
     U[i] = Z[i]/(2 ** 31)
 #print(Z)
@@ -72,9 +71,9 @@ for i in range(0,len(run_length_array)):
     for j in range(0,len(run_length_array)):
         p = A[i][j] * (run_length_array[i] - 500*B[i]) * (run_length_array[j]-500*B[j])
         sum = sum + p
-R=sum/500
-print(R)
-a = stats.chi2.ppf(q=0.9,df=6)
+R=sum/N
+print("Value of R is %f" %(R))
+a = stats.chi2.ppf(q=1-alpha,df=6)
 print(a)
 if(R > a):
     print("Reject")

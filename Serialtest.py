@@ -38,18 +38,11 @@ for i in np.arange(0,500,2):
    print(uniform_numbers[i:i+2])
    for j in range(0,len(e)):
        N1[k-1][j]= e[j]
-    #sum=0
-   # for e in range(0,len(uniform_numbers[x])):
-   #     sum = sum + ((K/N) * (uniform_numbers[x][e]-N/K)**2)
-   # print(" From %f to %f interval "%(i+0.01,i+d))
-    #print("Numbers are  =",e)
-   # print(sum)
    print("-------------------------------------------------------------------------------")
-  #  sum1 = sum + sum1
 
-#print(" CHi Square is = " , sum1)
 print(N1)
 print(N1[0][0]+1)
+K_array = []
 N2 = np.zeros((4,4))
 for i in range(0,len(N1)):
     for j in range(0,2):
@@ -59,6 +52,19 @@ for i in range(0,len(N1)):
             k = k+1
             if np.logical_and(p >m , p <= m+0.25):
                 print("%f  number in %f to %f interval and k and j is %d and %d "%(p,m,m+0.25,k,j))
-                N2[j][k-1] = N2[j][k-1]+1
+                K_array.append(k)
+               
+K_A = np.resize(np.array(K_array),(250,2))
+print(K_A)
+for i in range(0,len(K_A)):
+    for j in range(0,2):
+        if j==0:
+            p = K_A[i][j]
+        else:
+            q = K_A[i][j]
+    for d in range(0,len(N2)):
+        for e in range(0,len(N2)):
+            if (d+1)==p and (e+1)==q:
+                N2[d][e] = N2[d][e] + 1
 print(N2)
 

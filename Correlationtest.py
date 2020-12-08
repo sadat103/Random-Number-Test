@@ -27,12 +27,9 @@ sum = 0
 X =[]
 Y = []
 for k in range(0,h):
-    x = uniform_numbers[1+k*J]
+    x = uniform_numbers[0+k*J] ## my case index start from 0 
     X.append(x)
-    if 1+(k+1)*J >= N:
-        y = uniform_numbers[1+k*J]
-    else:
-        y = uniform_numbers[1+(k+1)*J]
+    y = uniform_numbers[0+(k+1)*J]
     Y.append(y)
     d = x * y
     sum = sum + d
@@ -44,18 +41,24 @@ for i in range(0,len(X)):
             Correlation_Matrix[i][j] = X[i]
         else:
             Correlation_Matrix[i][j] = Y[i]
+            
 print("Correlation matrix")
 print(Correlation_Matrix)
+
 print("Sum is %f" %(sum))
+
 Ro_J = 12 * (sum/(h+1)) - 3
 print("Ro_J is %f" %(Ro_J))
+
 Var_Ro_J = (13*h + 7)/(h+1)**2
 print("Var_Ro_J is %f" %(Var_Ro_J))
 
 A_J = Ro_J/math.sqrt(Var_Ro_J)
 print("A_J is %f" %(A_J))
+
 t = 1 - alpha/2
 Z_alpha = stats.norm.ppf(q=t)
+
 if A_J > Z_alpha:
     print("Reject")
 else:
