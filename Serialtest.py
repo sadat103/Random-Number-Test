@@ -90,7 +90,7 @@ if d==2:
         print("Accept")
 
 
-if d==3:
+elif d==3:
     N1 = np.zeros((math.floor(N/d),d))
 
     for i in np.arange(0,N,d):
@@ -99,3 +99,22 @@ if d==3:
         for j in range(0,len(e)):
              N1[k-2][j]= e[j]
     print(N1)
+
+    K_array = []
+    a1 = math.sqrt(K**d)
+    print(a1)
+    inter_val =1/K
+    a2 = int(a1)
+    N2 = np.zeros((a2,a2))
+    for i in range(0,len(N1)):
+        for j in range(0,d):
+            p = N1[i][j]
+            k=0
+            for m in np.arange(0,1,inter_val):
+                k = k+1
+                if np.logical_and(p >m , p <= m+inter_val):
+                    print("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d "%(i+1,j+1,p,m,m+inter_val,k))
+                    K_array.append(k)
+                    
+    K_A = np.resize(np.array(K_array),(int(N/d),d))
+    np.savetxt("Serial_K_array.txt", K_A, fmt="%s")

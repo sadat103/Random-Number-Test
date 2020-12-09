@@ -34,7 +34,7 @@ for i in np.arange(0,1,t):
     sum=0
     for e in range(0,len(uniform_numbers[x])):
         sum = sum + ((K/N) * (uniform_numbers[x][e]-N/K)**2)
-    print(" From %f to %f interval "%(i+0.01,i+t))
+    print(" From %f to %f interval "%(i,i+t))
     print("Numbers are  =", uniform_numbers[x])
     print(sum)
     print("-------------------------------------------------------------------------------")

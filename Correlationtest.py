@@ -25,7 +25,7 @@ h = math.floor(h1)
 print(h)
 sum = 0
 X =[]
-Y = []
+Y =[]
 for k in range(0,h):
     x = uniform_numbers[0+k*J] ## my case index start from 0 
     X.append(x)
