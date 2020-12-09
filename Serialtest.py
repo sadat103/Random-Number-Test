@@ -101,11 +101,10 @@ elif d==3:
     print(N1)
 
     K_array = []
-    a1 = math.sqrt(K**d)
-    print(a1)
+    #a1 = math.sqrt(K**d)
+    #print(a1)
     inter_val =1/K
-    a2 = int(a1)
-    N2 = np.zeros((a2,a2))
+    #a2 = int(a1)
     for i in range(0,len(N1)):
         for j in range(0,d):
             p = N1[i][j]
@@ -115,6 +114,31 @@ elif d==3:
                 if np.logical_and(p >m , p <= m+inter_val):
                     print("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d "%(i+1,j+1,p,m,m+inter_val,k))
                     K_array.append(k)
-                    
-    K_A = np.resize(np.array(K_array),(int(N/d),d))
+
+    K_A = np.resize(np.array(K_array),(math.floor(N/d),d))
     np.savetxt("Serial_K_array.txt", K_A, fmt="%s")
+
+    N2 = np.zeros((K,K,K))
+    for i in range(0,len(K_A)):
+        for j in range(0,d):
+            if j==0:
+                p = K_A[i][j]
+            elif j==1:
+                q = K_A[i][j]
+            elif j==2:
+                o = K_A[i][j]
+        for d in range(0,len(N2)):
+            for e in range(0,len(N2)):
+                for f in range(0,len(N2)):
+                    if (d+1)==p and (e+1)==q and (f+1)==o:
+                         N2[d][e][f] = N2[d][e][f] + 1
+
+    print("Interval Count Array")
+    print(N2)
+
+    ll=0
+    for i in range(0,len(N2)):
+        for j in range(0,len(N2)):
+            for e in range(0,len(N2)):
+                 ll = ll + N2[i][j][e]
+    print(ll)
