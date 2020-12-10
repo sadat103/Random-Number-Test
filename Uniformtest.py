@@ -29,21 +29,19 @@ for i in np.arange(0,1,t):
     k = k+1
     x = np.where(np.logical_and(uniform_numbers >i , uniform_numbers <= i+t))
     #print("Total number in %dth interval is %d "%(k,len(uniform_numbers[x])))
-    sum=0
-    for e in range(0,len(uniform_numbers[x])):
-        sum = sum + ((K/N) * (uniform_numbers[x][e]-N/K)**2)
+    d = ((K/N) * (len(uniform_numbers[x])-N/K)**2)
+    sum1 = sum1 + d
     #print("From %f to %f interval "%(i,i+t))
     #print("Numbers are  =", uniform_numbers[x])
     myfile.write("Total number in %dth interval is %d\n"%(k,len(uniform_numbers[x])))
     myfile.write("From %f to %f interval Numbers are \n"%(i,i+t))
     myfile.write(str(uniform_numbers[x]))
-    myfile.write("\nsum is = %f\n"%(sum))
+    myfile.write("\nsum is = %f\n"%(d))
     myfile.write("-------------------------------------------------------------------------------\n\n")
-    sum1 = sum + sum1
 
 print(" CHi Square is = " , sum1)
-a = stats.chi2.ppf(q=alpha,df=k-1)
-print(a)
+a = stats.chi2.ppf(q=1-alpha,df=k-1)
+print(" CHi Square_ppf is = ", a)
 if(sum1 > a):
     print("Reject")
 else:
