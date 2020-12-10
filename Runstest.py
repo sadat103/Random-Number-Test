@@ -47,8 +47,8 @@ for i in range(1, len(uniform_numbers)):
 # else cnt will be 1
 runs.append(cnt)
 r = np.array(runs)
-#print("Run array")
-#print(r)
+print("Run array")
+print(r)
 np.savetxt("Run_Array.txt",r, fmt="%s")
 run_length_array = np.zeros(6)
 for i in range(0,len(r)):

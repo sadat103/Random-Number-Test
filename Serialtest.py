@@ -19,7 +19,6 @@ for i in range(1,N):
     Z[i] = (65539 * Z[i-1]) % (2 ** 31)
     U[i] = Z[i]/(2 ** 31)
 uniform_numbers = np.round_(U,6)
-print("Sub interval")
 np.savetxt("Z.txt", Z, fmt="%s")
 np.savetxt("uniform.txt", uniform_numbers, fmt="%s")
 
@@ -34,11 +33,11 @@ if d==2:
         for j in range(0,len(e)):
              N1[k-1][j]= e[j]
 
-    print(N1)
+    #print(N1)
 
     K_array = []
     a1 = math.sqrt(K**d)
-    print(a1)
+    #print(a1)
     inter_val =1/K
     a2 = int(a1)
     N2 = np.zeros((a2,a2))
@@ -51,7 +50,7 @@ if d==2:
                 k = k+1
                 if np.logical_and(p >m , p <= m+inter_val):
                     #print("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d "%(i+1,j+1,p,m,m+inter_val,k))
-                    myfile.write("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d\n "%(i+1,j+1,p,m,m+inter_val,k))
+                    myfile.write("%dth tuple  %dth number %f is between ( %.3f to %.3f ) and interval is %d\n "%(i+1,j+1,p,m,m+inter_val,k))
                     K_array.append(k)
                
     K_A = np.resize(np.array(K_array),(int(N/d),d))
@@ -100,13 +99,10 @@ elif d==3:
         e = uniform_numbers[i:i+d]
         for j in range(0,len(e)):
              N1[k-2][j]= e[j]
-    print(N1)
+    #print(N1)
 
     K_array = []
-    #a1 = math.sqrt(K**d)
-    #print(a1)
     inter_val =1/K
-    #a2 = int(a1)
     myfile = open('Serial_number_range.txt', 'w')
     for i in range(0,len(N1)):
         for j in range(0,d):
@@ -116,7 +112,7 @@ elif d==3:
                 k = k+1
                 if np.logical_and(p >m , p <= m+inter_val):
                     #print("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d "%(i+1,j+1,p,m,m+inter_val,k))
-                    myfile.write("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d\n "%(i+1,j+1,p,m,m+inter_val,k))
+                    myfile.write("%dth tuple  %dth number %f is between ( %.3f to %.3f ) and interval is %d\n "%(i+1,j+1,p,m,m+inter_val,k))
                     K_array.append(k)
 
     K_A = np.resize(np.array(K_array),(math.floor(N/d),d))

@@ -42,8 +42,9 @@ for i in range(0,len(X)):
         else:
             Correlation_Matrix[i][j] = Y[i]
             
-print("Correlation matrix")
-print(Correlation_Matrix)
+#print("Correlation matrix")
+#print(Correlation_Matrix)
+np.savetxt("Correlation_Matrix.txt", Correlation_Matrix, fmt="%s")
 
 print("Sum is %f" %(sum))
 
@@ -58,8 +59,8 @@ print("A_J is %f" %(A_J))
 
 t = 1 - alpha/2
 Z_alpha = stats.norm.ppf(q=t)
-
-if A_J > Z_alpha:
+print("Z_alpha is %f" %(Z_alpha))
+if abs(A_J) > Z_alpha:
     print("Reject")
 else:
     print("Accept")
