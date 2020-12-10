@@ -42,6 +42,7 @@ if d==2:
     inter_val =1/K
     a2 = int(a1)
     N2 = np.zeros((a2,a2))
+    myfile = open('Serial_number_range.txt', 'w')
     for i in range(0,len(N1)):
         for j in range(0,d):
             p = N1[i][j]
@@ -49,7 +50,8 @@ if d==2:
             for m in np.arange(0,1,inter_val):
                 k = k+1
                 if np.logical_and(p >m , p <= m+inter_val):
-                    print("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d "%(i+1,j+1,p,m,m+inter_val,k))
+                    #print("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d "%(i+1,j+1,p,m,m+inter_val,k))
+                    myfile.write("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d\n "%(i+1,j+1,p,m,m+inter_val,k))
                     K_array.append(k)
                
     K_A = np.resize(np.array(K_array),(int(N/d),d))
@@ -105,6 +107,7 @@ elif d==3:
     #print(a1)
     inter_val =1/K
     #a2 = int(a1)
+    myfile = open('Serial_number_range.txt', 'w')
     for i in range(0,len(N1)):
         for j in range(0,d):
             p = N1[i][j]
@@ -112,7 +115,8 @@ elif d==3:
             for m in np.arange(0,1,inter_val):
                 k = k+1
                 if np.logical_and(p >m , p <= m+inter_val):
-                    print("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d "%(i+1,j+1,p,m,m+inter_val,k))
+                    #print("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d "%(i+1,j+1,p,m,m+inter_val,k))
+                    myfile.write("%dth tuple  %dth number %f is between ( %f to %f ) and interval is %d\n "%(i+1,j+1,p,m,m+inter_val,k))
                     K_array.append(k)
 
     K_A = np.resize(np.array(K_array),(math.floor(N/d),d))
@@ -135,10 +139,26 @@ elif d==3:
 
     print("Interval Count Array")
     print(N2)
-
+    '''
     ll=0
     for i in range(0,len(N2)):
         for j in range(0,len(N2)):
             for e in range(0,len(N2)):
                  ll = ll + N2[i][j][e]
     print(ll)
+    '''
+    sum=0
+    for i in range (0,len(N2)):
+        for j in range(0,len(N2)):
+            for k in range(0,len(N2)):
+                t = (N2[i][j][k] - N/(K**d))**2
+                sum = sum + t
+
+    CHi = ((K**d)/N)*sum
+    print("Chi square is %f" %(CHi))
+    a = stats.chi2.ppf(q=1-alpha,df=K**d -1)
+    print("Chi ppf value is %f" %(a))
+    if(CHi > a):
+        print("Reject")
+    else:
+        print("Accept")
