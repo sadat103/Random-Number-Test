@@ -64,12 +64,13 @@ for i in range(0,len(r)):
         run_length_array[4]=run_length_array[4] +1
     else:
         run_length_array[5]=run_length_array[5] +1
+        
 print("Run length array")
 print(run_length_array)
 sum = 0 
 for i in range(0,len(run_length_array)):
     for j in range(0,len(run_length_array)):
-        p = A[i][j] * (run_length_array[i] - 500*B[i]) * (run_length_array[j]-500*B[j])
+        p = A[i][j] * (run_length_array[i] - N*B[i]) * (run_length_array[j]-N*B[j])
         sum = sum + p
 R=sum/N
 print("Value of R is %f" %(R))
