@@ -55,7 +55,7 @@ Var_Ro_J = (13*h + 7)/(h+1)**2
 print("Var_Ro_J is %f" %(Var_Ro_J))
 
 A_J = Ro_J/math.sqrt(Var_Ro_J)
-print("A_J is %f" %(A_J))
+print("A_J is %f" %(abs(A_J)))
 
 t = 1 - alpha/2
 Z_alpha = stats.norm.ppf(q=t)

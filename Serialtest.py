@@ -61,15 +61,15 @@ if d==2:
                 p = K_A[i][j]
             elif j==1:
                 q = K_A[i][j]
-        for d in range(0,len(N2)):
+        for d1 in range(0,len(N2)):
             for e in range(0,len(N2)):
-                if (d+1)==p and (e+1)==q:
-                    N2[d][e] = N2[d][e] + 1
+                if (d1+1)==p and (e+1)==q:
+                    N2[d1][e] = N2[d1][e] + 1
 
     print("Interval Count Array")
     print(N2)
     '''
-    ll=0
+    ll=0  #for checking 
     for i in range(0,len(N2)):
         for j in range(0,len(N2)):
             ll = ll + N2[i][j]
@@ -83,6 +83,7 @@ if d==2:
 
     CHi = ((K**d)/N)*sum
     print("Chi square is %f" %(CHi))
+    print(d)
     a = stats.chi2.ppf(q=1-alpha,df=K**d -1)
     print("Chi ppf value is %f" %(a))
     if(CHi > a):
@@ -127,11 +128,11 @@ elif d==3:
                 q = K_A[i][j]
             elif j==2:
                 o = K_A[i][j]
-        for d in range(0,len(N2)):
+        for d2 in range(0,len(N2)):
             for e in range(0,len(N2)):
                 for f in range(0,len(N2)):
-                    if (d+1)==p and (e+1)==q and (f+1)==o:
-                         N2[d][e][f] = N2[d][e][f] + 1
+                    if (d2+1)==p and (e+1)==q and (f+1)==o:
+                         N2[d2][e][f] = N2[d2][e][f] + 1
 
     print("Interval Count Array")
     print(N2)
@@ -152,6 +153,7 @@ elif d==3:
 
     CHi = ((K**d)/N)*sum
     print("Chi square is %f" %(CHi))
+    print(d)
     a = stats.chi2.ppf(q=1-alpha,df=K**d -1)
     print("Chi ppf value is %f" %(a))
     if(CHi > a):
